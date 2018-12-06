@@ -1,0 +1,52 @@
+<section class="row" data-ng-controller="ViewProfileController" data-ng-init="findOneUser()">
+	<br>
+	<div class = "row">
+		<img  class="img-circle img-responsive center-block" height="150" width = "150" src="
+		{{ '/modules/users/img/profile/' + profileUserDetails._id + '.png' }}">
+		<fieldset>
+			<h3 class="col-md-12 text-center">@{{ profileUserDetails.username }}</h3> <br>
+			<h4 class="col-md-12 text-center">{{ profileUserDetails.displayName }}</h4>
+		</fieldset>
+
+<div class="list-group-item">
+		<button ng-hide='profileUserDetails.isFollowing' ng-click = "followUser()" type="button" class="btn btn-primary">
+			<i class='glyphicon glyphicon-user'></i> follow?
+		</button>
+		<button ng-show='profileUserDetails.isFollowing' ng-click = "followUser()" type="button" class="btn btn-default">
+			<i class='glyphicon glyphicon-user'></i> unfollow?
+		</button>
+
+		<tabset>
+			<tab heading="Choices">
+				Profile Choice Feed Under Development
+				<!-- <div ng-repeat="choice in userFeed">
+					{{choice.choiceQuestion}}
+				</div> -->
+			</tab>
+			<tab heading="{{profileUserDetails.followers.length}} Followers">
+				<div ng-repeat='follower in profileUserDetails.followers'>
+					<div class="row">
+					<div class='col-md-1'>
+						<img  class="img-circle img-responsive pull-left" height="30" width = "30"
+						ng-src="{{userThumbURL + follower._id + userThumbFormat}}">
+					</div>
+					{{follower.username}}
+					</div>
+				</div>
+			</tab>
+			<tab heading="{{profileUserDetails.following.length}} Following">
+				<div ng-repeat='following in profileUserDetails.following'>
+					<div class="row">
+					<div class='col-md-1'>
+						<img  class="img-circle img-responsive pull-left" height="30" width = "30"
+						ng-src="{{userThumbURL + following._id + userThumbFormat}}">
+					</div>
+					{{following.username}}
+					</div>
+				</div>
+			</tab>
+		</tabset>
+
+	</div>
+</div>
+</section>

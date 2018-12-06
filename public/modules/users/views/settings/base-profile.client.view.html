@@ -1,0 +1,12 @@
+<section class="row" data-ng-controller="ViewProfileController">
+	<br>
+	<div class = "row">
+		<img  class="img-thumbnail img-responsive center-block" height="200" width = "200" src="{{ '/modules/users/img/profile/' + user._id + '.png' }}">
+		<fieldset>
+			<h3 class="col-md-12 text-center">@{{user.username}}</h3> <br>
+			<h4 class="col-md-12 text-center">{{user.firstName + " " + user.lastName}}</h4>
+		</fieldset>
+		<div>{{user.followers.length}} followers</div>
+		<div>{{user.following.length}} following</div>
+	</div>
+</section>

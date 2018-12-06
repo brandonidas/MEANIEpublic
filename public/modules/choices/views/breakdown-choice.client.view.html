@@ -1,0 +1,110 @@
+<section data-ng-controller="BreakDownController" data-ng-init="findOne()">
+    <div class="page-header list-group-item">
+        <h3>Breakdown Choice</h3>
+    </div>
+    <div class="list-group-item">
+      <h4> Question: "{{ choice.choiceQuestion }}" </h4>
+    </div>
+
+    <!-- <img class="img-thumbnail pull-left" src="{{optionsPath + choice.option1 + optionsFormat}}"> -->
+    <div class="text-centered col-md-12 list-group-item">
+      <div class="input-group col-md-4">
+        <span class="input-group-addon" id="basic-addon1">@</span>
+        <input ng-model="searchText" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+      </div>
+    </br>
+    <div class="row col-md-8">
+      <div class="col-md-6">
+        <div>
+          <table class="table table-bordered">
+            <tr>
+              <td>
+              <img class="img-thumbnail img-responsive pull-left" height="50" width = "50" ng-src="{{optionsPath + choice.option1 + optionsFormat}}">
+              </td>
+              <td>
+              <h4>Option 1</h4>
+              </td>
+            </tr>
+            <tr class =""ng-repeat="liker in choice.option1Likes | filter:searchText">
+              <td>{{$index + 1}}</td>
+              <td><a href="/#!/user/{{liker.username}}"><b>{{liker.username}}</b></a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div>
+          <table class="table table-bordered">
+            <tr>
+              <td>
+              <img class="img-thumbnail img-responsive pull-left" height="50" width = "50" ng-src="{{optionsPath + choice.option2 + optionsFormat}}">
+              </td>
+              <td>
+              <h4>Option 2</h4>
+              </td>
+            </tr>
+            <tr ng-repeat="liker in choice.option2Likes | filter:searchText">
+              <td>{{$index + 1}}</td>
+              <td><a href="/#!/user/{{liker.username}}"><b>{{liker.username}}</b></a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row col-md-8">
+      <div class="col-md-6">
+        <div>
+          <table class="table table-bordered">
+            <tr>
+              <td>
+              <img class="img-thumbnail img-responsive pull-left" height="50" width = "50" ng-src="{{optionsPath + choice.option3 + optionsFormat}}">
+              </td>
+              <td>
+              <h4>Option 3</h4>
+              </td>
+            </tr>
+
+            <tr ng-repeat="liker in choice.option3Likes | filter:searchText">
+              <td>{{$index + 1}}</td>
+              <td><b><a href="/#!/user/{{liker.username}}"><b>{{liker.username}}</b></a></b></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div>
+          <table class="table table-bordered">
+            <tr>
+              <td>
+              <img class="img-thumbnail img-responsive pull-left" height="50" width = "50" ng-src="{{optionsPath + choice.option4 + optionsFormat}}">
+              </td>
+              <td>
+              <h4>Option 4</h4>
+              </td>
+            </tr>
+
+            <tr ng-repeat="liker in choice.option4Likes | filter:searchText">
+              <td>{{$index + 1}}</td>
+              <td><a href="/#!/user/{{liker.username}}"><b>{{liker.username}}</b></a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6" class="list-group-item">
+      <div
+      data-ac-chart="'pie'"
+      data-ac-data="choice.chartData"
+      data-ac-config="config"
+      height="400"
+      width="400"
+      class="chart">
+    </div>
+    </div></br>
+  </div>
+
+</section>

@@ -1,0 +1,93 @@
+<header role="banner" class="banner">
+<div class="bgimg container-fluid">
+<div data-ng-controller="HomeController">
+	<!-- <h3 class='pull-right'>
+			<small> Sign up! <i class='glyphicon glyphicon-arrow-up'></i> </small>
+	</h3> -->
+</br>
+	<!-- <img src= 'modules/core/img/background/shutterstock_228722404 copy.jpg'> -->
+	<div class="col-md-5">
+		<!-- <div class="jumbotron">
+			<h2>Help your friends make decisions</h2>
+			<p class="text-muted">(or let them help you)<p>
+			<img class="img-responsive col-md-8" src='/modules/core/views/Key2.png'>
+			<p>
+			Humans, as social beings, need social validation in order to make choices,
+			even if they have the smarts to make the decision on their own.
+			</p>
+			<p>
+			This is why
+			you might easily be able to decifer a problem in a test paper but then fret when it comes to deciding
+			what to wear, what to eat or otherwise.
+			</p>
+			<p>
+			But sometimes that social evidence is hard to find. That's where our app comes in.
+		</p>
+			<p>
+				<a class="btn btn-info btn-md" href="/#!/blog" role="button">More About Project</a>
+				<a class="btn btn-success btn-md" href="/#!/brandon" role="button">About The Developer</a>
+			</p>
+		</div> -->
+<div class="row list-group">
+  <div class="">
+		<div class="list-group-item">
+			<h1 class="text-info text-center">Let your friends decide</h1>
+		</div>
+	</br>
+		<img class="img-responsive" src='/modules/core/views/Key2.png'>
+		</br>
+    <div class="list-group-item">
+      <div class="caption">
+        <p>	Because humans, as social beings, need social validation in order to make choices,
+							even if they have the smarts to make the decision on their own.</p>
+        <p>
+					<a class="btn btn-info btn-md" href="/#!/blog" role="button">More About Project</a>
+					<a class="btn btn-success btn-md" href="/#!/brandon" role="button">About The Developer</a>
+				</p>
+      </div>
+    </div>
+  </div>
+</div>
+	</div>
+	<div ng-controller="AuthenticationController" class="col-md-offset-5 col-md-2">
+		<div>
+			<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+				<fieldset>
+					<div class="form-group">
+						<div data-ng-show="error" class="text-center text-danger">
+							<strong data-ng-bind="error"></strong>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="firstName">First Name</label>
+						<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last Name</label>
+						<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+					</div>
+					<div class="text-center form-group">
+						<button type="submit" class="btn btn-large btn-primary">Sign up</button>
+						<br>
+						<br>
+						<a href="/#!/signin" class="btn btn-large btn-default show-signup">Sign in</a>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</header>

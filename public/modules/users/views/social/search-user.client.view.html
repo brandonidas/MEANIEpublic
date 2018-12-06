@@ -1,0 +1,21 @@
+<section class="row" data-ng-controller="SearchUserController" >
+	<br>
+	<div class="input-group input-group-lg">
+		<span class="input-group-addon" id="sizing-addon1">@</span>
+		<input type="text"  ng-model="searchTerm" ng-change="searchForUser()" placeholder="Search username"  class="form-control" placeholder="Username">
+	</div>
+
+	<div class="list-group">
+		<li class="list-group-item" ng-repeat="users in searchResults" >
+			<a href="/#!/user/{{users.username}}">
+			<img  class="img-thumbnail img-circle img-responsive pull-left" height="40" width = "40"
+			ng-src="/modules/users/img/profile/{{users._id}}.png">
+			{{users.username}}
+		</br>
+			<small class ="text-muted">{{users.firstName + ' ' + users.lastName}}</small>
+			</a>
+		</br>
+		</li>
+	</div>
+
+</section>

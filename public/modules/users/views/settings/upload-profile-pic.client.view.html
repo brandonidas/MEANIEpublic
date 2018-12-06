@@ -1,0 +1,27 @@
+<section class="row" data-ng-controller="ProfilePicUploadController">
+  <h3 class="col-md-12 text-center">upload your profile picture</h3>
+  <!-- <div>Select an image file: <input type="file" id="fileInput" /></div>
+  <div stlye="background:#E4E4E4;overflow:hidden;width:500px;height:350px;">
+    <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+  </div>
+  <div>Cropped Image:</div>
+  <div><img ng-src="{{myCroppedImage}}" /></div> -->
+  <div class="container text-center">
+    <div>
+      <button ng-show="cropDone" class="btn btn-primary" ng-click="uploadProfilePic()">Upload <i class='glyphicon glyphicon-upload'></i></button>
+      <p>We're working on a better image cropping system</p>
+      <!-- <button ng-show="cropDone" class="btn btn-primary" ng-click="imageResize()">console log resize</i></button> -->
+      </br>
+    </div>
+
+    <image-crop
+    data-width="200"
+    data-height="200"
+    data-shape="circle"
+    data-result="imageCropResult"
+    data-step="imageCropStep"
+    ></image-crop>
+
+  </div>
+
+</section>

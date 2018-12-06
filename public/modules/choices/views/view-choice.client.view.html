@@ -1,0 +1,76 @@
+<section data-ng-controller="ChoicesController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="choice.name"></h1>
+	</div>
+
+		<div class="list-group-item">
+			<!--<a data-ng-repeat="choice in choices" data-ng-href="#!/choices/{{choice._id}}" class="list-group-item">-->
+			<img  class="img-circle img-responsive pull-left" height="50" width = "50"
+			ng-src="{{ 'modules/users/img/profile/' + choice.user._id + '.png' }}">{{choice.username}}
+
+			<div class="pull-right">
+				{{choice.created | timeAgo}}
+				<i class="glyphicon glyphicon-time"></i>
+				<a class="btn btn-primary" data-ng-click="remove();">
+					<i class="glyphicon glyphicon-trash"></i>
+				</a>
+			</div>
+			<span am-time-ago="choice.created"></span>
+
+			<h4> {{choice.choiceQuestion}} </h4>
+			<br>
+
+			<div class="row">
+				<div class="col-xs-6 col-md-6">
+					<a class="thumbnail">
+						<img id="{{choice.option1}}" ng-click="option1Like(choice.option1, choice)" src="{{optionsPath + choice.option1 + optionsFormat}}">
+						{{choice.option1Likes.length}} <b ng-show='choice.option1Likes.userLiked'>Liked</b>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-md-6">
+					<a class="thumbnail">
+						<img id="{{choice.option2}}" ng-click="option2Like(choice.option2, choice)"  src="{{optionsPath + choice.option2 + optionsFormat}}">
+						{{choice.option2Likes.length}} <b ng-show='choice.option2Likes.userLiked'>Liked</b>
+					</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div ng-show='choice.option3loaded' id="{{choice.option3}}" ng-click="option3Like(choice.option3, choice)" class="col-xs-6 col-md-6">
+					<a class="thumbnail">
+						<img ng-load='option3Loaded($index)'ng-src="{{optionsPath + choice.option3 + optionsFormat}}">
+						{{choice.option3Likes.length}} <b ng-show='choice.option3Likes.userLiked'>Liked</b>
+					</a>
+				</div>
+
+				<div ng-show='choice.option4loaded' class="col-xs-6 col-md-6">
+					<a class="thumbnail">
+						<img ng-load='option4Loaded($index)' id="{{choice.option4}}" ng-click="option4Like(choice.option4, choice)" src="{{optionsPath + choice.option4 + optionsFormat}}">
+						{{choice.option4Likes.length}} <b ng-show='choice.option4Likes.userLiked'><i class='glyphicon glyphicon-flag'></i>Liked</b>
+					</a>
+				</div>
+
+				<h4 class="list-group-item-heading" data-ng-bind="choice.name"></h4>
+			</div>
+		</div>
+
+
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == choice.user._id))">
+		<!-- <a class="btn btn-primary" href="/#!/choices/{{choice._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a> -->
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	</br>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="choice.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="choice.user.displayName"></span>
+		</em>
+	</small>
+</section>

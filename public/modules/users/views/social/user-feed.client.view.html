@@ -1,0 +1,73 @@
+<section data-ng-controller="ChoicesController" data-ng-init="userfeed()">
+    <div class="page-header row">
+        <div = "col-md-6">
+        <h1>Choice Feed</h1>
+      </div>
+        <div = "col-md-6">
+      </div>
+    </div>
+    <br>
+    <div class="list-group" data-ng-repeat="choice in choicesFeed" data-ng-href="#!/choices/{{choice._id}}">
+        <div class="list-group-item">
+        <!--<a data-ng-repeat="choice in choices" data-ng-href="#!/choices/{{choice._id}}" class="list-group-item">-->
+          {{choice.username}} <div class="pull-right">{{choice.created | date:'H'}}</div>
+          <span am-time-ago="choice.created"></span>
+
+          <h4> {{choice.choiceQuestion}} </h4>
+          <br>
+
+          <div class="row">
+            <div ng-click="option1Like(choice.option1, choice)" class="col-xs-6 col-md-3">
+              <a class="thumbnail">
+                {{choice.option1}}
+                <img src="{{optionsPath + choice.option1 + optionsFormat}}">
+              </br>
+              <div>
+                {{choice.option1Likes.length}}
+              </div>
+              </a>
+            </div>
+            <div ng-click="option2Like(choice.option2, choice)" class="col-xs-6 col-md-3">
+            <a class="thumbnail">
+              {{choice.option2}}
+              <img data-src="holder.js/100%x180" alt="...">
+              <img src="{{optionsPath + choice.option2 + optionsFormat}}">
+              </br>
+              <div>
+                {{choice.option2Likes.length}}
+              </div>
+            </a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div ng-click="option3Like(choice.option3, choice)" class="col-xs-6 col-md-3">
+              <a class="thumbnail">
+                {{choice.option3}}
+                <img data-src="holder.js/100%x180" alt="...">
+                <img src="{{optionsPath + choice.option3 + optionsFormat}}">
+                </br>
+                <div>
+                  {{choice.option3Likes.length}}
+                </div>
+              </a>
+            </div>
+            <div ng-click="option4Like(choice.option4, choice)" class="col-xs-6 col-md-3">
+            <a class="thumbnail">
+              {{choice.option4}}
+              <img data-src="holder.js/100%x180" alt="...">
+              <img src="{{optionsPath + choice.option4 + optionsFormat}}">
+              </br>
+              <div>
+                {{choice.option4Likes.length}}
+              </div>
+            </a>
+            </div>
+			<h4 class="list-group-item-heading" data-ng-bind="choice.name"></h4>
+    </div>
+    </div>
+  </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!choices.$resolved || choices.length">
+    	No Choices yet, why don't you <a href="/#!/choices/create">create one</a>?
+    </div>
+</section>

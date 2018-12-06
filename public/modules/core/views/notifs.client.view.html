@@ -1,0 +1,30 @@
+<section data-ng-controller="NotificationsController" ng-init="seenNotifs()">
+	<h3> <span> Notifs <i class="glyphicon glyphicon-comment"></i></span> </h3>
+</br>
+<div ng-init='list()' class='col-md-5'>
+	<div class="list-group-item"ng-repeat="notif in notifications">
+		<div class = "row">
+			<div class='col-md-2'>
+				<img  class="img-circle img-responsive pull-left" height="50" width = "50"
+				ng-src="{{userThumbURL + notif.user._id + userThumbFormat}}">
+			</div>
+
+			<div class='text-center col-md-8'>
+				<p>
+					<a href="/#!/user/{{notif.username}}">{{notif.username}}</a>{{' ' + notif.notificationMsg}}
+				</p>
+			</div>
+			<div class='col-md-2'>
+				<a class='pull-right' href="#!/choices/{{notif.choice}}">
+					<img ng-show="notif.type == 'optionLiked'" class="img-responsive thumbnail pull-right"
+					height = "50" width = "50" ng-src="{{optionThumbURL + notif.option_id + optionThumbFormat}}">
+				</a>
+			</div>
+	</div>
+		<div class="row text-right">
+			<small>{{notif.created | timeAgo }} <i class="glyphicon glyphicon-time"></i></small>
+		</div>
+	</div>
+</div>
+
+</section>

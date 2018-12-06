@@ -1,0 +1,195 @@
+<section class="" data-ng-controller="ChoicesController" data-ng-init="feed()">
+    <!-- <div class="page-header row">
+        <h4>Choice Feed</h4>
+    </div> -->
+  </br>
+</br>
+
+<div class=''>
+  <div class='list-group col-md-2 pull-left'>
+    <div class="list-group-item text-center">
+      <a href="http://goo.gl/forms/UtckgMNLtc" target="_blank">
+        <button class='btn btn-xs btn-default'>Submit Feedback</button>
+      </a>
+      <br>
+      <small>Ps. This works better on Chrome browsers</small>
+    </div>
+    <div class="list-group-item" data-ng-controller="ViewProfileController">
+      <br>
+        <img  class="img-circle img-thumbnail img-responsive center-block" height="150" width = "150" src="{{ '/modules/users/img/profile/' + user._id + '.png' }}">
+          <h5 class="col-md-12 text-center">@{{user.username}}</h5>
+          <!-- <h4 class="col-md-12 text-center">{{user.firstName + " " + user.lastName}}</h4> -->
+        <div class='text-center'><h5>{{user.followers.length}} followers</br></br>{{user.following.length}} following<h5></div>
+          <div class='row text-center'>
+            <!-- <a class='btn btn-xs btn-default' href='#!/settings/profile'>Edit</a> -->
+            <a class='btn btn-xs btn-default' href='#!/settings/uploadprofilepic'>Change Profile Pic</a>
+          </div>
+        </div>
+  </div>
+  <div class='.invisible-md-* list-group col-md-3 pull-right'>
+    <div class="list-group-item text-center">
+      <a class="text-center" href="/#!/choices/create">
+        <button class='btn btn-md btn-primary col-md-12'>
+          <!-- <i class='glyphicon glyphicon-fullscreen'></i> -->
+          <i class="glyphicon glyphicon-upload"></i>
+            Create & Post</button>
+      </a>
+    </br>
+    </div>
+
+    <div class="list-group-item" data-ng-controller="SearchUserController" >
+      <h5><i class='glyphicon glyphicon-search'></i> Search For Users</h5>
+      <div class="list-group">
+      <div class="input-group input-group-md ">
+        <span class="input-group-addon" id="sizing-addon1">@</span>
+        <input type="text"  ng-model="searchTerm" ng-change="searchForUser()" placeholder="Search username"  class="form-control" placeholder="Username">
+      </div>
+
+        <li class="row list-group-item" ng-repeat="users in searchResults" >
+          <a href="/#!/user/{{users.username}}">
+            <div class="col-md-3">
+              <img  class="img-circle img-responsive" height="20" width = "20" src="
+              {{ '/modules/users/img/profile/' + users._id + '.png' }}">
+            </div>
+            <div class="col-md-9">
+              {{users.username}}
+            </div>
+          </a>
+        </li>
+      </div>
+    </div>
+
+    <div class="list-group-item">
+      <h5><i class='glyphicon glyphicon-flag'></i> Masthead</h5>
+      <b>Brandon Tong </b> <i class='glyphicon glyphicon-wrench'></i>
+      <a href="mailto:brandonidas@gmail.com">brandonidas@gmail.com</a>
+      <ul>
+        <li>Client-Side Development</li>
+        <li>Server-Side Development</li>
+        <li>UX Design</li>
+        <li>Beta Test Coordination</li>
+      </ul>
+
+    </div>
+
+    <div class="list-group-item">
+    <p class="text-muted text-center">
+      <b>prototype version 0.1</b>
+    </br>
+      Thanks for participating!
+    </p>
+    </div>
+    <!-- <div class="list-group-item" data-ng-controller="NotificationsController">
+        <h5> <span> Notifs <i class="glyphicon glyphicon-comment"></i></span> </h5>
+      <div ng-init='list()'>
+        <div ng-repeat="notif in notifications | limitTo: 10">
+          </br>
+          <img  class="img-circle img-responsive pull-left" height="30" width = "30" ng-src="{{userThumbURL + notif.user._id + userThumbFormat}}">
+          {{notif.username + ' ' + notif.notificationMsg}}
+          <a href="#!/choices/{{notif.choice}}">
+            <img ng-show="notif.type == 'optionLiked'" class="img-responsive pull-right" height="30" width = "30" ng-src="{{optionThumbURL + notif.option_id + optionThumbFormat}}">
+          </a>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+  <div class='col-md-7 fixed centered'>
+    <div class="alert alert-warning" data-ng-hide="!choicesFeed.$resolved || choicesFeed.length">
+      <div class=" text-center">
+        Nothing in your feed yet, why don't you <a href="/#!/choices/create">post something</a>?
+        </br>
+        Or <a href="/#!/search">find your friends</a>?
+      </div>
+      <div class="list-group" >
+          <div class="list-group-item">
+          <!--<a data-ng-repeat="choice in choices" data-ng-href="#!/choices/{{choice._id}}" class="list-group-item">-->
+          <img  class="img-thumbnail img-circle img-responsive pull-left" height="50" width = "50"
+          ng-src="/modules/core/img/brand/NavIcon.png">
+          <div class="row">
+          <div class="text-primary"> <a href="/#!/user/Branzey"><b>choiciture</b></a></div>
+          <div class="pull-right"><small>{{user.created | timeAgo}} <i class="glyphicon glyphicon-time"></i>  </small></div>
+          <span am-time-ago="choice.created"></span>
+          <h4> Which would you like do to first? </h4>
+          </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-6">
+                <a class="thumbnail text-center" href="/#!/choices/create">
+                  <h3>post a choice?</h3>
+                    <h1><i class="glyphicon glyphicon-upload"></i></h1>
+
+                  <!-- <img id="{{choice.option1}}" ng-click="option1Like(choice.option1, choice)" src="{{optionsPath + choice.option1 + optionsFormat}}"> -->
+                  <h5>1 <i class='glyphicon glyphicon-thumbs-up'></i> <b ng-show='choice.option1Likes.userLiked'>Liked</b></h5>
+                </a>
+              </div>
+
+              <div class="col-xs-6 col-md-6">
+              <a class="thumbnail text-center" href="/#!/search">
+                <h3>find friends?</h3>
+                <h1><i class="glyphicon glyphicon-user"></i></h1>
+                <!-- <img id="{{choice.option2}}" ng-click="option2Like(choice.option2, choice)"  src="{{optionsPath + choice.option2 + optionsFormat}}"> -->
+                <h5>2 <i class='glyphicon glyphicon-thumbs-up'></i><b ng-show='choice.option2Likes.userLiked'>Liked</b></h5>
+              </a>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    </div>
+    <div class="list-group" data-ng-repeat="choice in choicesFeed" data-ng-href="#!/choices/{{choice._id}}">
+        <div class="list-group-item">
+        <!--<a data-ng-repeat="choice in choices" data-ng-href="#!/choices/{{choice._id}}" class="list-group-item">-->
+        <img  class="img-thumbnail img-circle img-responsive pull-left" height="50" width = "50"
+        ng-src="{{ 'modules/users/img/profile/' + choice.user._id + '.png' }}">
+        <div class="row">
+        <div class="text-primary"> <a href="/#!/user/{{choice.username}}"><b>{{choice.username}}</b></a></div>
+        <div class="pull-right"><small>{{choice.created | timeAgo}} <i class="glyphicon glyphicon-time"></i>  </small></div>
+        <span am-time-ago="choice.created"></span>
+        <h4> {{choice.choiceQuestion}} </h4>
+        </div>
+
+          <br>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-6">
+              <a class="thumbnail">
+                <img id="{{choice.option1}}" ng-click="option1Like(choice.option1, choice)" src="{{optionsPath + choice.option1 + optionsFormat}}">
+                <h5 class="text-center">{{choice.option1Likes.length}} <i class='glyphicon glyphicon-thumbs-up'></i> <b ng-show='choice.option1Likes.userLiked'>Liked</b></h5>
+              </a>
+            </div>
+
+            <div class="col-xs-6 col-md-6">
+            <a class="thumbnail">
+              <img id="{{choice.option2}}" ng-click="option2Like(choice.option2, choice)"  src="{{optionsPath + choice.option2 + optionsFormat}}">
+              <h5 class="text-center">{{choice.option2Likes.length}} <i class='glyphicon glyphicon-thumbs-up'></i><b ng-show='choice.option2Likes.userLiked'>Liked</b></h5>
+            </a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div ng-show='choice.option3loaded' id="{{choice.option3}}" ng-click="option3Like(choice.option3, choice)" class="col-xs-6 col-md-6">
+              <a class="thumbnail">
+                <img ng-load='option3Loaded($index)'ng-src="{{optionsPath + choice.option3 + optionsFormat}}">
+                <h5 class="text-center">{{choice.option3Likes.length}} <i class='glyphicon glyphicon-thumbs-up'></i><b ng-show='choice.option3Likes.userLiked'>Liked</b></h5>
+              </a>
+            </div>
+
+            <div ng-show='choice.option4loaded' class="col-xs-6 col-md-6">
+              <a class="thumbnail">
+                <img ng-load='option4Loaded($index)' id="{{choice.option4}}" ng-click="option4Like(choice.option4, choice)" src="{{optionsPath + choice.option4 + optionsFormat}}">
+                <h5 class="text-center">{{choice.option4Likes.length}} <i class='glyphicon glyphicon-thumbs-up'></i><b ng-show='choice.option4Likes.userLiked'>Liked</b></h5>
+              </a>
+            </div>
+
+			<h4 class="list-group-item-heading" data-ng-bind="choice.name"></h4>
+      <a class="pull-right"href="/#!/breakdown/{{choice._id}}">View Likers <i class="glyphicon glyphicon-th-large"></i></a>
+    </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>

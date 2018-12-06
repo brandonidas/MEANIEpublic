@@ -1,0 +1,115 @@
+<section data-ng-controller="ChoicesCreateController">
+    <div class="page-header list-group-item">
+        <h1>Post Choice</h1>
+    </div>
+    <div class="col-md-12 list-group-item">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+              <label class="control-label " for="choiceQuestion">Choice Question</label>
+              <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+              </div>
+              <div class="controls">
+                <input type="text" data-ng-model="choiceQuestion" id="name" class="form-control" placeholder="Which should I ...? :)" required>
+              </div>
+              <div flow-init
+              flow-object="flowObject"
+              >
+            </br>
+              <div class="drop" flow-drop ng-class="dropClass">
+                <span class="btn btn-primary btn-small" flow-btn>Choose Images <i class='glyphicon glyphicon-camera'></i></span>
+                <!-- <a class="btn btn-small btn-info" ng-click="$flow.cancel()">Cancel</a> -->
+                <button type="submit" ng-click = "flowControlledBtn()" ng-show="$flow.files[1]"class="btn btn-large btn-success">Post <i class='glyphicon glyphicon-upload'></i></button>
+              </br>
+              Tip: You can choose all 2 to 4 images at once, example below (3MB size limit each)
+              </div>
+            </br>
+
+                <div class="">
+                  {{choice.choiceQuestion}}
+                  <br>
+                  <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                      <a class="thumbnail">
+                        {{choice.option1}}
+                        <img src="modules/choices/img/options/placeholder/p1.png" ng-show="usePlaceHoldOptions">
+                        <!-- <img data-src="holder.js/100%x180" alt="..."> -->
+                        <img flow-img="$flow.files[0]">
+                        <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                          <div class="progress-bar" role="progressbar"
+                          aria-valuenow="{{file.progress() * 100}}"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                          ng-style="{width: (file.progress() * 100) + '%'}">
+                          <span class="sr-only">{{file.progress()}}% Complete</span>
+                        </div>
+                      </div>
+                      </a>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                    <a class="thumbnail">
+                      {{choice.option2}}
+                      <!-- <img data-src="holder.js/100%x180"> -->
+                      <img src="modules/choices/img/options/placeholder/p2.png" ng-show="usePlaceHoldOptions">
+                      <img flow-img="$flow.files[1]">
+                      <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                        <div class="progress-bar" role="progressbar"
+                        aria-valuenow="{{file.progress() * 100}}"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        ng-style="{width: (file.progress() * 100) + '%'}">
+                        <span class="sr-only">{{file.progress()}}% Complete</span>
+                      </div>
+                    </div>
+                    </a>
+                  </div>
+
+              </div>
+
+              <div class="row" ng-hide="usePlaceHoldOptions">
+
+                <div class="col-xs-6 col-md-3">
+                <a class="thumbnail">
+                    {{choice.option3}}
+                    <img data-src="holder.js/100%x180" alt="...">
+                    <img flow-img="$flow.files[2]">
+                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                      <div class="progress-bar" role="progressbar"
+                      aria-valuenow="{{file.progress() * 100}}"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      ng-style="{width: (file.progress() * 100) + '%'}">
+                      <span class="sr-only">{{file.progress()}}% Complete</span>
+                    </div>
+                  </div>
+                </a>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                <a class="thumbnail">
+                  {{choice.option4}}
+                  <img data-src="holder.js/100%x180" alt="...">
+                  <img flow-img="$flow.files[3]">
+                  <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                    <div class="progress-bar" role="progressbar"
+                    aria-valuenow="{{file.progress() * 100}}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    ng-style="{width: (file.progress() * 100) + '%'}">
+                    <span class="sr-only">{{file.progress()}}% Complete</span>
+                  </div>
+                </div>
+                </a>
+                </div>
+              </div>
+            </div>
+
+
+
+            </div>
+          </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
